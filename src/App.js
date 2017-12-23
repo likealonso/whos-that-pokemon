@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Pokemon from './Pokemon/pokemon'
+import {BrowserRouter} from 'react-router-dom'
 
 class App extends Component {
   constructor() {
@@ -20,10 +21,12 @@ class App extends Component {
 
   render() {
     return(
-    <div className="container">
-      <h1>Who's that Pokemon?</h1>
-      <Pokemon pokemon={this.state.pokemon}/>
-    </div>
+      <BrowserRouter>
+        <div className="container">
+          <h1>Who's that Pokemon?</h1>
+          <Pokemon pokemon={this.state.pokemon}/>
+        </div>
+      </BrowserRouter>
     )
   }
 }
