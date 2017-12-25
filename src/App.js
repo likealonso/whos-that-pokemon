@@ -18,16 +18,19 @@ class App extends Component {
   }
 
   anotherPokemon = () => {
-    window.location.reload();
-    
+    this.fetchPokemon();
+  }
+
+  fetchPokemon = () => {
+    var id = Math.floor((Math.random() * 150) + 1);
+    return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(data => data.json()).then( data => {
+      this.setState({pokemon:data, showPokemon: false})
+    })
+
   }
 
   componentDidMount() {
-    var id = Math.floor((Math.random() * 150) + 1);
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(data => data.json()).then( data => {
-      this.setState({pokemon:data})
-      console.log(data)
-    })
+    this.fetchPokemon()
   }
 
   render() {
