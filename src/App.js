@@ -17,6 +17,11 @@ class App extends Component {
     this.setState({showPokemon: true})
   }
 
+  anotherPokemon = () => {
+    window.location.reload();
+    
+  }
+
   componentDidMount() {
     var id = Math.floor((Math.random() * 150) + 1);
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(data => data.json()).then( data => {
@@ -32,6 +37,7 @@ class App extends Component {
           <h1>Who's that Pokemon?</h1>
           <Pokemon 
             showPokemon={this.state.showPokemon}
+            anotherPokemon={this.anotherPokemon}
             whoThatPokemon={this.whoThatPokemon}
             pokemon={this.state.pokemon}/>
         </div>
