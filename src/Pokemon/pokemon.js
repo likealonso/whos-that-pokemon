@@ -51,9 +51,9 @@ const Pokemon = ({pokemon, whoThatPokemon, showPokemon, anotherPokemon, difficul
             <br/>
             <img style={{filter: filter, margin: "0px 100px 0px 50px"}} width="200" height="auto" src={level}>
             </img><br/><br/>
-            <button onClick={whoThatPokemon} className="btn btn-primary">Tell me!</button>&nbsp;&nbsp;
-            <button onClick={anotherPokemon} className="btn btn-danger">I'll guess another one</button>&nbsp;&nbsp;
-            <button onClick={levelChange} className="btn btn-default">{flip}</button>
+            <button style={{margin: "0px 5px 15px 5px"}} onClick={whoThatPokemon} className="btn btn-primary">Tell me!</button>
+            <button style={{margin: "0px 5px 15px 5px"}} onClick={anotherPokemon} className="btn btn-danger">Guess another one</button>
+            <button style={{margin: "0px 5px 15px 5px"}} onClick={levelChange} className="btn btn-default">{flip}</button>
             <br/><br/>
             <h3 style={{color: color}}>It's {pokemon.name.toUpperCase()}!</h3>
         </div>
