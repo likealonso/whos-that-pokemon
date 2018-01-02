@@ -9,7 +9,17 @@ class App extends Component {
     super();
     this.state = {
       pokemon: null,
-      showPokemon: false
+      showPokemon: false,
+      difficulty: 1
+    }
+  }
+
+  levelChange = () => {
+    if (this.state.difficulty === 1) {
+      this.setState({difficulty: 2})
+    }
+    else if (this.state.difficulty === 2) {
+      this.setState({difficulty:1})
     }
   }
 
@@ -37,12 +47,14 @@ class App extends Component {
     return(
       <BrowserRouter>
         <div className="container">
-          <h1>Who's that Pokemon?</h1>
           <Pokemon 
             showPokemon={this.state.showPokemon}
             anotherPokemon={this.anotherPokemon}
             whoThatPokemon={this.whoThatPokemon}
-            pokemon={this.state.pokemon}/>
+            pokemon={this.state.pokemon}
+            difficulty={this.state.difficulty}
+            levelChange={this.levelChange}
+          />
         </div>
       </BrowserRouter>
     )
