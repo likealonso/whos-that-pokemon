@@ -55,7 +55,7 @@ const Pokemon = ({pokemon, whoThatPokemon, showPokemon, anotherPokemon, difficul
             <button style={{margin: "0px 5px 15px 5px"}} onClick={anotherPokemon} className="btn btn-danger">Guess another one</button>
             <button style={{margin: "0px 5px 15px 5px"}} onClick={levelChange} className="btn btn-default">{flip}</button>
             <br/><br/>
-            <h3 style={{color: color}}>It's {pokemon.name.toUpperCase()}!</h3>
+            <h3 style={{fontFamily: "Verdana", color: color}}>It's {pokemon.name.toUpperCase()}!</h3>
         </div>
     )
 }
