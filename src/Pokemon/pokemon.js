@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Pokemon = ({pokemon, whoThatPokemon, showPokemon, anotherPokemon, difficulty, levelChange, name, changeName, tellMe}) => {
+const Pokemon = ({pokemon, whoThatPokemon, showPokemon, anotherPokemon, difficulty, levelChange, name, changeName, tellMe, message}) => {
     let color = ""
     let filter = ""
     let level = ""
     let flip = ""
-    console.log(name)
-    console.log(difficulty)
+    
+    console.log(message)
     if (pokemon && showPokemon && difficulty === 1) {
         color = "white"
         filter = "contrast(100%) brightness(100%)"
@@ -44,7 +44,7 @@ const Pokemon = ({pokemon, whoThatPokemon, showPokemon, anotherPokemon, difficul
     }
    
     return (
-        <div>
+        <div style={{textAlign:"center"}}>
             <br/>
             <img style={{width:250, height:"auto"}} src={"https://i.imgur.com/fmSJtwq.png"}></img>
             <img style={{width:70, height:"auto"}} src={"https://i.imgur.com/LwiQ3fL.png"}></img>
@@ -55,12 +55,23 @@ const Pokemon = ({pokemon, whoThatPokemon, showPokemon, anotherPokemon, difficul
             <button style={{margin: "0px 5px 15px 5px"}} onClick={anotherPokemon} className="btn btn-danger">Guess another one</button>
             <button style={{margin: "0px 5px 15px 5px"}} onClick={levelChange} className="btn btn-default">{flip}</button>
                 <br/><br/>
-            <form onSubmit={whoThatPokemon}>
-                <input placeholder="type your guess" value={name} onChange={(e) => changeName(e)}/>
+            <form className="form-horizontal" onSubmit={whoThatPokemon}>
+                <div className="form-group">
+                    <div className="col-sm-12">
+                        <input type="text" className="form-control" placeholder="type your guess" value={name} onChange={(e) => changeName(e)}/>
+                    </div>
+                </div>
             </form>
-            <h3 style={{fontFamily: "Verdana", color: color}}>Correct! It's {pokemon.name.toUpperCase()}!</h3>
+            <h2 style={{fontFamily: "Verdana", color: "white"}}>{message}</h2>
+            <h3 style={{fontFamily: "Verdana", color: color}}>It's {pokemon.name.toUpperCase()}!</h3>
         </div>
     )
 }
 
 export default Pokemon
+
+// <div className="form-group">
+// <div className="col-sm-12">
+//   <input type="email" className="form-control" placeholder="Email" value={this.state.email} onChange={(e) => this.handleChange('email', e)} />
+// </div>
+// </div>

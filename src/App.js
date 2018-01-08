@@ -12,7 +12,7 @@ class App extends Component {
       showPokemon: false,
       difficulty: 1,
       name: '',
-      correct: false
+      message: ''
     }
   }
 
@@ -27,11 +27,14 @@ class App extends Component {
 
   whoThatPokemon = (e) => {
     e.preventDefault();
-    if (this.state.pokemon && this.state.name === this.state.pokemon.name) {
-    this.setState({showPokemon: true, name: '', correct: true})
+    if (this.state.pokemon && this.state.name === this.state.pokemon.name || this.state.name === this.state.pokemon.name.slice(0, -1)) {
+    this.setState({showPokemon: true, name: this.state.pokemon.name, message: 'Correct!'})
     }
+    else if (this.state.showPokemon === true) {
+      this.setState({name: '', message: 'Try another pokemon'});
+      }
     else if (this.state.pokemon && this.state.name !== this.state.pokemon.name) {
-    alert('not correct, try again!')
+    this.setState({name: '', message: 'Nope! Try again.'});
     }
   }
 
@@ -53,9 +56,8 @@ class App extends Component {
   fetchPokemon = () => {
     var id = Math.floor((Math.random() * 150) + 1);
     return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(data => data.json()).then( data => {
-      this.setState({pokemon:data, showPokemon: false})
+      this.setState({pokemon:data, showPokemon: false, message: '', name: ''})
     })
-
   }
 
   componentDidMount() {
@@ -74,8 +76,10 @@ class App extends Component {
             difficulty={this.state.difficulty}
             levelChange={this.levelChange}
             name={this.state.name}
+            message={this.state.message}
             changeName={this.changeName}
             tellMe={this.tellMe}
+            isGuessTrue={this.isGuessTrue}
           />
         </div>
       </BrowserRouter>
