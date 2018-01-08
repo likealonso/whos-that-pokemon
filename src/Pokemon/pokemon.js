@@ -48,13 +48,12 @@ const Pokemon = ({pokemon, whoThatPokemon, showPokemon, anotherPokemon, difficul
             <br/>
             <img style={{width:250, height:"auto"}} src={"https://i.imgur.com/fmSJtwq.png"}></img>
             <img style={{width:70, height:"auto"}} src={"https://i.imgur.com/LwiQ3fL.png"}></img>
-                <br/><br/>
-            <img style={{filter: filter, margin: "0px 100px 0px 50px"}} width="200" height="auto" src={level}></img>
-                <br/><br/>
+                <br/>
+            <img style={{filter: filter, margin: "0px 100px 0px 50px"}} width="200" height="auto" src={level}></img><br/>
             <button style={{margin: "0px 5px 15px 5px"}} onClick={tellMe} className="btn btn-primary">Tell me!</button>
-            <button style={{margin: "0px 5px 15px 5px"}} onClick={anotherPokemon} className="btn btn-danger">Guess another one</button>
+            <button style={{margin: "0px 5px 15px 5px"}} onClick={anotherPokemon} className="btn btn-danger">Another one</button>
             <button style={{margin: "0px 5px 15px 5px"}} onClick={levelChange} className="btn btn-default">{flip}</button>
-                <br/><br/>
+                <br/>
             <form className="form-horizontal" onSubmit={whoThatPokemon}>
                 <div className="form-group">
                     <div className="col-sm-12">
@@ -62,7 +61,7 @@ const Pokemon = ({pokemon, whoThatPokemon, showPokemon, anotherPokemon, difficul
                     </div>
                 </div>
             </form>
-            <h2 style={{fontFamily: "Verdana", color: "white"}}>{message}</h2>
+            <h3 style={{fontFamily: "Verdana", color: "white"}}>{message}</h3>
             <h3 style={{fontFamily: "Verdana", color: color}}>It's {pokemon.name.toUpperCase()}!</h3>
         </div>
     )

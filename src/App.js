@@ -27,7 +27,7 @@ class App extends Component {
 
   whoThatPokemon = (e) => {
     e.preventDefault();
-    if (this.state.pokemon && this.state.name === this.state.pokemon.name || this.state.name === this.state.pokemon.name.slice(0, -1)) {
+    if (this.state.pokemon && this.state.name === this.state.pokemon.name || this.state.name === this.state.pokemon.name.charAt(0).toUpperCase() + this.state.pokemon.name.slice(1)) {
     this.setState({showPokemon: true, name: this.state.pokemon.name, message: 'Correct!'})
     }
     else if (this.state.showPokemon === true) {
