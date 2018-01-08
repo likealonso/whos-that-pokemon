@@ -10,7 +10,9 @@ class App extends Component {
     this.state = {
       pokemon: null,
       showPokemon: false,
-      difficulty: 1
+      difficulty: 1,
+      name: '',
+      correct: false
     }
   }
 
@@ -23,8 +25,25 @@ class App extends Component {
     }
   }
 
-  whoThatPokemon = () => {
+  whoThatPokemon = (e) => {
+    e.preventDefault();
+    if (this.state.pokemon && this.state.name === this.state.pokemon.name) {
+    this.setState({showPokemon: true, name: '', correct: true})
+    }
+    else if (this.state.pokemon && this.state.name !== this.state.pokemon.name) {
+    alert('not correct, try again!')
+    }
+  }
+
+  tellMe = () => {
     this.setState({showPokemon: true})
+  }
+
+  changeName = (e) => {
+    e.preventDefault();
+    this.setState({
+      name: e.target.value
+    })
   }
 
   anotherPokemon = () => {
@@ -54,6 +73,9 @@ class App extends Component {
             pokemon={this.state.pokemon}
             difficulty={this.state.difficulty}
             levelChange={this.levelChange}
+            name={this.state.name}
+            changeName={this.changeName}
+            tellMe={this.tellMe}
           />
         </div>
       </BrowserRouter>
